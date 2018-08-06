@@ -4,7 +4,7 @@
 
     <groupId>juno.springBoot</groupId>
     <artifactId>juno-petclinic</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <modules>
         <module>dataModule</module>
@@ -46,6 +46,7 @@
     </build>
     <scm>
         <developerConnection>scm:git:https://github.com/Juno-MJ/juno-petclinic.git</developerConnection>
+    <tag>juno-petclinic-0.0.1</tag>
   </scm>
 
 </project>
