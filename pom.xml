@@ -45,7 +45,7 @@
         </plugins>
     </build>
     <scm>
-        <developerConnection>scm:git:https://github.com/Juno-MJ/juno-petclinic.git</developerConnection>
+        <developerConnection>scm:svn:https://github.com/Juno-MJ/juno-petclinic.git</developerConnection>
   </scm>
 
 </project>
