@@ -1,11 +1,11 @@
 package juno.springboot.junopetclinic.Services.Map;
 
 import juno.springboot.junopetclinic.Model.Vet;
-import juno.springboot.junopetclinic.Services.CrudService;
+import juno.springboot.junopetclinic.Services.VetService;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet,Long> implements CrudService<Vet,Long> {
+public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetService {
 
     @Override
     public Vet save(Vet object) {

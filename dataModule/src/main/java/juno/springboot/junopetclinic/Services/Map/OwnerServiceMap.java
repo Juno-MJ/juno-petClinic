@@ -1,11 +1,11 @@
 package juno.springboot.junopetclinic.Services.Map;
 
 import juno.springboot.junopetclinic.Model.Owner;
-import juno.springboot.junopetclinic.Services.CrudService;
+import juno.springboot.junopetclinic.Services.OwnerService;
 
 import java.util.Set;
 
-public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements CrudService<Owner,Long> {
+public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements OwnerService {
 
     @Override
     public Owner save(Owner object) {
@@ -32,5 +32,8 @@ public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements C
         super.deleteById(id);
     }
 
-
+    @Override
+    public Owner findByLastName(String lastName) {
+        return null;
+    }
 }
