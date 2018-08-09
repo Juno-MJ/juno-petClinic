@@ -2,8 +2,6 @@ package juno.springboot.junopetclinic.bootstrap;
 
 import juno.springboot.junopetclinic.Model.Owner;
 import juno.springboot.junopetclinic.Model.Vet;
-import juno.springboot.junopetclinic.Services.Map.OwnerServiceMap;
-import juno.springboot.junopetclinic.Services.Map.VetServiceMap;
 import juno.springboot.junopetclinic.Services.OwnerService;
 import juno.springboot.junopetclinic.Services.VetService;
 import org.springframework.boot.CommandLineRunner;
@@ -12,14 +10,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataLoader implements CommandLineRunner {
 
-
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataLoader() {
-        this.ownerService = new OwnerServiceMap();
-        this.vetService = new VetServiceMap();
+
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
+
 
     @Override
     public void run(String... args) throws Exception {

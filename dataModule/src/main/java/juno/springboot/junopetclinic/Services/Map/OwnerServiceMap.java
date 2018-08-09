@@ -2,9 +2,11 @@ package juno.springboot.junopetclinic.Services.Map;
 
 import juno.springboot.junopetclinic.Model.Owner;
 import juno.springboot.junopetclinic.Services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements OwnerService {
 
     @Override
