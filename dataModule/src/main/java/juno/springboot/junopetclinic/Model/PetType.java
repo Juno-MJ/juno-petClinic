@@ -1,6 +1,6 @@
 package juno.springboot.junopetclinic.Model;
 
-public class PetType extends BaseEntity{
+public class PetType extends BaseEntity {
 
     private String name;
 

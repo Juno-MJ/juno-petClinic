@@ -5,27 +5,27 @@
     <title>List Of Vets</title>
 </head>
 <body>
-    <h1 th:text="'List of Vets'"></h1>
+<h1 th:text="'List of Vets'"></h1>
 
-    <!--/*@thymesVar id="vet" type = "juno.springboot.junopetclinic.Model.Vet"*/-->
+<!--/*@thymesVar id="vet" type = "juno.springboot.junopetclinic.Model.Vet"*/-->
 
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>FirstName</th>
-            <th>LastName</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="vet : ${vetList}">
-            <td th:text="${vet.id}"></td>
-            <td th:text="${vet.firstName}"></td>
-            <td th:text="${vet.lastName}"></td>
-        </tr>
-        </tbody>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="vet : ${vetList}">
+        <td th:text="${vet.id}"></td>
+        <td th:text="${vet.firstName}"></td>
+        <td th:text="${vet.lastName}"></td>
+    </tr>
+    </tbody>
 
-    </table>
+</table>
 
 </body>
 </html>
