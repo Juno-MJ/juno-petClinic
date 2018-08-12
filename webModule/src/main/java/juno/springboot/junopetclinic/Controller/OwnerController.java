@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Set;
 
 @Controller
+@RequestMapping("/owners")
 public class OwnerController {
 
     private final OwnerService ownerService;
@@ -17,7 +18,7 @@ public class OwnerController {
         this.ownerService = ownerService;
     }
 
-    @RequestMapping({"/owners", "/owners/index", "/owners/index.html"})
+    @RequestMapping({"","/","/index", "/index.html"})
     public String listOwners(Model model) {
 
         model.addAttribute("ownerList", ownerService.findAll());
@@ -40,6 +41,11 @@ public class OwnerController {
         });
 
         return "owners/index";
+    }
+
+    @RequestMapping("/find")
+    public String redirectFromErrorPage(){
+        return "notimpl";
     }
 
 
