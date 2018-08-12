@@ -40,4 +40,5 @@ public class Pet extends BaseEntity {
     public void setPetType(PetType petType) {
         this.petType = petType;
     }
+
 }

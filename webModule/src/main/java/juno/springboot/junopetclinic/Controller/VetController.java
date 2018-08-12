@@ -17,6 +17,16 @@ public class VetController {
     @RequestMapping({"/vets", "/vets/index", "/vets/index.html"})
     public String listVets(Model model) {
         model.addAttribute("vetList", vetService.findAll());
+
+        vetService.findAll().forEach(vet -> {
+            System.out.println(vet.getId());
+            System.out.println(vet.getFirstName());
+            vet.getSpecialties().forEach(speciality -> {
+                System.out.println(speciality.getId());
+                System.out.println(speciality.getDescription());
+            });
+        });
+
         return "vets/index";
     }
 
