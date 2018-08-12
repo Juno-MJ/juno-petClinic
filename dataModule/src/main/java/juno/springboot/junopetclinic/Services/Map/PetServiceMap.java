@@ -2,9 +2,11 @@ package juno.springboot.junopetclinic.Services.Map;
 
 import juno.springboot.junopetclinic.Model.Pet;
 import juno.springboot.junopetclinic.Services.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
