@@ -1,8 +1,10 @@
 package juno.springboot.junopetclinic.bootstrap;
 
 import juno.springboot.junopetclinic.Model.Owner;
+import juno.springboot.junopetclinic.Model.PetType;
 import juno.springboot.junopetclinic.Model.Vet;
 import juno.springboot.junopetclinic.Services.OwnerService;
+import juno.springboot.junopetclinic.Services.PetTypeService;
 import juno.springboot.junopetclinic.Services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -12,11 +14,12 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
-
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService,PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
 
@@ -51,6 +54,21 @@ public class DataLoader implements CommandLineRunner {
 
 
         System.out.println("Loaded Vet Data..");
+
+
+        PetType petType1 = new PetType();
+        petType1.setName("Dog");
+
+        petTypeService.save(petType1);
+
+        PetType petType2 = new PetType();
+        petType2.setName("Goat");
+
+        petTypeService.save(petType2);
+
+
+        System.out.println("Loaded PetType Data..");
+
 
     }
 }
