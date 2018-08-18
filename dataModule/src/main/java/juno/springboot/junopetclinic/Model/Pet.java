@@ -1,12 +1,24 @@
 package juno.springboot.junopetclinic.Model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "Pets")
 public class Pet extends BaseEntity {
 
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
     private Owner owner;
+
+    @ManyToOne
+    @JoinColumn(name = "petType_id")
     private PetType petType;
 
     public String getName() {

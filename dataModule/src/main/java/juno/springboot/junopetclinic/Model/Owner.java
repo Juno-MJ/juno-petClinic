@@ -1,13 +1,23 @@
 package juno.springboot.junopetclinic.Model;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name = "Owners")
 public class Owner extends Person {
 
+    @Column(name = "address")
     private String address;
+
+    @Column(name = "city")
     private String city;
+
+    @Column(name = "contact_number")
     private String contactNumber;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "owner")
     private Set<Pet> pets = new HashSet<>();
 
     public String getAddress() {
