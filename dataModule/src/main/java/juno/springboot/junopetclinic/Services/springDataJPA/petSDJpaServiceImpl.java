@@ -21,8 +21,7 @@ public class petSDJpaServiceImpl implements PetService {
 
     @Override
     public Pet save(Pet object) {
-        petRepo.save(object);
-        return object;
+        return petRepo.save(object);
     }
 
     @Override

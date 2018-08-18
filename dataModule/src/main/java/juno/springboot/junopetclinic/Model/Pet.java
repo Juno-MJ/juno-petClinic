@@ -58,4 +58,17 @@ public class Pet extends BaseEntity {
         this.petType = petType;
     }
 
+    public Set<Visit> getVisit_dates() {
+        return visit_dates;
+    }
+
+    public void setVisit_dates(Set<Visit> visit_dates) {
+        this.visit_dates = visit_dates;
+    }
+
+    public void addAVisit(Visit visit){
+        visit.setPetBroughtToVisit(this);
+        this.visit_dates.add(visit);
+    }
+
 }

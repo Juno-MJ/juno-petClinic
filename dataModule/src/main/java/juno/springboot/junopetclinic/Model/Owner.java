@@ -52,5 +52,10 @@ public class Owner extends Person {
         this.pets = pets;
     }
 
+    public void addAPet(Pet pet){
+        pet.setOwner(this);
+        this.getPets().add(pet);
+    }
+
     
 }

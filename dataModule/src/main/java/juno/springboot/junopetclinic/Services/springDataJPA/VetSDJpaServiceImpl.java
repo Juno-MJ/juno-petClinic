@@ -26,8 +26,7 @@ public class VetSDJpaServiceImpl implements VetService {
 
     @Override
     public Vet save(Vet object) {
-        vetRepo.save(object);
-        return object;
+        return vetRepo.save(object);
     }
 
     @Override

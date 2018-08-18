@@ -21,8 +21,7 @@ public class specialtySDJpaServiceImpl implements SpecialityService {
 
     @Override
     public Speciality save(Speciality object) {
-        specialtyRepo.save(object);
-        return object;
+        return specialtyRepo.save(object);
     }
 
     @Override

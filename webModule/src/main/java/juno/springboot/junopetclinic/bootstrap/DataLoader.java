@@ -1,10 +1,7 @@
 package juno.springboot.junopetclinic.bootstrap;
 
 import juno.springboot.junopetclinic.Model.*;
-import juno.springboot.junopetclinic.Services.OwnerService;
-import juno.springboot.junopetclinic.Services.PetTypeService;
-import juno.springboot.junopetclinic.Services.SpecialityService;
-import juno.springboot.junopetclinic.Services.VetService;
+import juno.springboot.junopetclinic.Services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +14,15 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    //Pet service not included bcz..pet will be cascaded auto by hibernate
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -71,8 +71,15 @@ public class DataLoader implements CommandLineRunner {
         owner1spet.setPetType(dog);
         owner1spet.setOwner(owner1);
 
-        owner1.getPets().add(owner1spet);
 
+        Visit visit1 = new Visit();
+        visit1.setDateOfVisit(LocalDate.now());
+        visit1.setPurposeOfVisit("Health Check");
+        visit1.setPetBroughtToVisit(owner1spet);
+
+        owner1.addAPet(owner1spet);
+
+        visitService.save(visit1);
         ownerService.save(owner1);
 
         Owner owner2 = new Owner();
@@ -88,24 +95,31 @@ public class DataLoader implements CommandLineRunner {
         owner2spet.setPetType(goat);
         owner2spet.setOwner(owner2);
 
-        owner2.getPets().add(owner2spet);
+        Visit visit2 = new Visit();
+        visit2.setDateOfVisit(LocalDate.now());
+        visit2.setPurposeOfVisit("Health Check");
+        visit2.setPetBroughtToVisit(owner2spet);
 
+        owner2.addAPet(owner2spet);
 
+        visitService.save(visit2);
         ownerService.save(owner2);
 
         System.out.println("Loaded Owner Data..");
 
+
+
         Vet vet1 = new Vet();
         vet1.setFirstName("First");
         vet1.setLastName("Vet");
-        vet1.getSpecialties().add(radiology);
+        vet1.addASpecialty(radiology);
 
         vetService.save(vet1);
 
         Vet vet2 = new Vet();
         vet2.setFirstName("Second");
         vet2.setLastName("Vet");
-        vet2.getSpecialties().add(surgery);
+        vet2.addASpecialty(surgery);
 
         vetService.save(vet2);
 
