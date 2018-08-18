@@ -2,6 +2,8 @@ package juno.springboot.junopetclinic.Model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Pets")
@@ -20,6 +22,9 @@ public class Pet extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "petType_id")
     private PetType petType;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "petBroughtToVisit")
+    private Set<Visit> visit_dates = new HashSet<>();
 
     public String getName() {
         return name;
