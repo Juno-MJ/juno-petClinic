@@ -5,11 +5,13 @@ import juno.springboot.junopetclinic.Model.Pet;
 import juno.springboot.junopetclinic.Services.OwnerService;
 import juno.springboot.junopetclinic.Services.PetService;
 import juno.springboot.junopetclinic.Services.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default","map"})
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetService petService;

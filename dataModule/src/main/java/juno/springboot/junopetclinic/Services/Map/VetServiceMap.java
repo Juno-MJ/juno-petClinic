@@ -3,11 +3,13 @@ package juno.springboot.junopetclinic.Services.Map;
 import juno.springboot.junopetclinic.Model.Vet;
 import juno.springboot.junopetclinic.Services.SpecialityService;
 import juno.springboot.junopetclinic.Services.VetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default","map"})
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     private final SpecialityService specialityService;
@@ -56,5 +58,6 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
     public void deleteById(Long id) {
         super.deleteById(id);
     }
+
 }
 

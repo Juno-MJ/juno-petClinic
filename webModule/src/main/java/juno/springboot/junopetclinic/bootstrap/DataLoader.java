@@ -2,13 +2,14 @@ package juno.springboot.junopetclinic.bootstrap;
 
 import juno.springboot.junopetclinic.Model.*;
 import juno.springboot.junopetclinic.Services.*;
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @Component
-public class DataLoader implements CommandLineRunner {
+public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
     private final OwnerService ownerService;
     private final VetService vetService;
@@ -26,14 +27,14 @@ public class DataLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
 
         int count = petTypeService.findAll().size();
         if(count==0){
             loadData();
         }
-
     }
+
 
     private void loadData() {
         PetType petType1 = new PetType();
@@ -79,8 +80,8 @@ public class DataLoader implements CommandLineRunner {
 
         owner1.addAPet(owner1spet);
 
-        visitService.save(visit1);
         ownerService.save(owner1);
+        visitService.save(visit1);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Second");
@@ -102,8 +103,8 @@ public class DataLoader implements CommandLineRunner {
 
         owner2.addAPet(owner2spet);
 
-        visitService.save(visit2);
         ownerService.save(owner2);
+        visitService.save(visit2);
 
         System.out.println("Loaded Owner Data..");
 

@@ -20,11 +20,6 @@ public class VetSDJpaServiceImpl implements VetService {
     }
 
     @Override
-    public Vet findByLastName(String lastName) {
-        return vetRepo.findByLastName(lastName).orElse(null);
-    }
-
-    @Override
     public Vet save(Vet object) {
         return vetRepo.save(object);
     }
