@@ -66,6 +66,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         owner1.setCity("Tirunelveli");
         owner1.setContactNumber("1231231234");
 
+
         Pet owner1spet = new Pet();
         owner1spet.setName("Juno");
         owner1spet.setDateOfBirth(LocalDate.now());

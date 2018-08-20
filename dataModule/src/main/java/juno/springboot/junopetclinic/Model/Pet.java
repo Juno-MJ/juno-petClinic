@@ -1,10 +1,17 @@
 package juno.springboot.junopetclinic.Model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Pets")
 public class Pet extends BaseEntity {
@@ -25,46 +32,6 @@ public class Pet extends BaseEntity {
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "petBroughtToVisit")
     private Set<Visit> visit_dates = new HashSet<>();
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
-    public PetType getPetType() {
-        return petType;
-    }
-
-    public void setPetType(PetType petType) {
-        this.petType = petType;
-    }
-
-    public Set<Visit> getVisit_dates() {
-        return visit_dates;
-    }
-
-    public void setVisit_dates(Set<Visit> visit_dates) {
-        this.visit_dates = visit_dates;
-    }
 
     public void addAVisit(Visit visit){
         visit.setPetBroughtToVisit(this);
